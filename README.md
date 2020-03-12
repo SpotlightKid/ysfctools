@@ -14,16 +14,18 @@ Header
 
 The file header looks like:
 
+```
 00000000  59 41 4d 41 48 41 2d 59  53 46 43 00 00 00 00 00  |YAMAHA-YSFC.....|
 00000010  31 2e 30 2e 32 00 00 00  00 00 00 00 00 00 00 00  |1.0.2...........|
 00000020  nn nn nn nn ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
 00000030  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+```
 
 Earlier versions of the Motif seem to produce versions 1.0.1 and 1.0.0 with
 an identical header, and one slight format difference. (See below under 'Entry
 lists'.)
 
-nn nn nn nn is the (big-endian) size in bytes of the catalogue which follows.
+`nn nn nn nn` is the (big-endian) size in bytes of the catalogue which follows.
 
 
 Catalogue
@@ -36,6 +38,7 @@ the file.
 
 Here is an example catalogue from the Yamaha InspirationInAFlash.X3A file:
 
+```
 00000040  45 4d 4c 54 00 00 01 30  45 4d 53 54 00 00 08 83  |EMLT...0EMST....|
 00000050  45 50 46 4d 00 00 29 89  45 56 43 45 00 00 bc e1  |EPFM..).EVCE....|
 00000060  45 57 46 4d 00 01 94 b4  45 41 52 50 00 01 ed 66  |EWFM....EARP...f|
@@ -51,7 +54,7 @@ Here is an example catalogue from the Yamaha InspirationInAFlash.X3A file:
 00000100  44 46 56 54 00 29 75 38  44 53 43 48 00 29 a8 70  |DFVT.)u8DSCH.).p|
 00000110  44 50 43 48 00 29 a8 e8  44 50 4d 54 00 29 ab d3  |DPCH.)..DPMT.)..|
 00000120  44 53 4d 54 00 29 c9 43  44 57 49 4d 00 2a 17 af  |DSMT.).CDWIM.*..|
-
+```
 
 Blocks
 ------
@@ -118,8 +121,9 @@ data excluding the initial eight bytes of magic-plus-length.
 Block types
 -----------
 
-[NNN below are zero-padded and numbered from zero, i.e. 000, 001, ...]
+(NNN below are zero-padded and numbered from zero, i.e. 000, 001, ...)
 
+```
 ESYS, DSYS  -  system configuration
   (exactly one Entr, number 0, name System, filename system.sys)
 ESCH, DSCH  -  song chain
@@ -135,7 +139,8 @@ ESMT, DSMT  -  song mixings (filenames NNN-Song.smt)
 EPTN, DPTN  -  patterns (filenames NNN-Pattern.ptn)
 EPMT, DPMT  -  pattern mixings (filenames NNN-Pattern.pmt)
 EPCH, DPCH  -  pattern chains (filenames NNN-Pattern.pch)
-
+EMSQ, DMSQ  -  ??? (MODX / Montage)
+ELST, DLST  -  LiveSet ? (MODX / Montage)
 EFVT, DFVT  -  favorites:
   0x00 "Favorite" favourite.fvt
   0x01 "Favorite" arpeggio.fvt
@@ -160,6 +165,7 @@ EVCE, DVCE  -  voices (filenames XXXXXX-Voice.vce, e.g. 3F0800-Voice.vce)
   0x3f8000 - 0x3fbfff  -  song sample (00-7f) and mixing (80-ff) voices
   0x3fc000 - 0x3fffff  -  pattern sample (00-7f) and mixing (80-ff) voices
   0x7f0000 - 0x7f0000  -  GMDR
+```
 
 GM, PRE1-8, PREDR and GMDR are preset and are not included in [ED]VCE data.
 
@@ -211,24 +217,26 @@ Voice numbers are stored in the data block of each performance (DPFM) and
 multi (DPMT/DSMT/DMLT). They are stored as three bytes in big-endian order, as
 described in the bank select section of the Motif XF Data List:
 
-  0x000000 - 0x00007f  -  GM
-  0x3f0000 - 0x3f007f  -  PRE1
-  0x3f0100 - 0x3f017f  -  PRE2
-  0x3f0200 - 0x3f027f  -  PRE3
-  0x3f0300 - 0x3f037f  -  PRE4
-  0x3f0400 - 0x3f047f  -  PRE5
-  0x3f0500 - 0x3f057f  -  PRE6
-  0x3f0600 - 0x3f067f  -  PRE7
-  0x3f0700 - 0x3f077f  -  PRE8
-  0x3f0800 - 0x3f087f  -  USR1
-  0x3f0900 - 0x3f097f  -  USR2
-  0x3f0a00 - 0x3f0a7f  -  USR3
-  0x3f0b00 - 0x3f0b7f  -  USR4
-  0x3f2000 - 0x3f207f  -  PREDR
-  0x3f2800 - 0x3f287f  -  USRDR
-  0x3f3200 - 0x3f32ff  -  sample voice
-  0x3f3c00 - 0x3f3c0f  -  mixing voice
-  0x7f0000 - 0x7f0000  -  GMDR
+```
+0x000000 - 0x00007f  -  GM
+0x3f0000 - 0x3f007f  -  PRE1
+0x3f0100 - 0x3f017f  -  PRE2
+0x3f0200 - 0x3f027f  -  PRE3
+0x3f0300 - 0x3f037f  -  PRE4
+0x3f0400 - 0x3f047f  -  PRE5
+0x3f0500 - 0x3f057f  -  PRE6
+0x3f0600 - 0x3f067f  -  PRE7
+0x3f0700 - 0x3f077f  -  PRE8
+0x3f0800 - 0x3f087f  -  USR1
+0x3f0900 - 0x3f097f  -  USR2
+0x3f0a00 - 0x3f0a7f  -  USR3
+0x3f0b00 - 0x3f0b7f  -  USR4
+0x3f2000 - 0x3f207f  -  PREDR
+0x3f2800 - 0x3f287f  -  USRDR
+0x3f3200 - 0x3f32ff  -  sample voice
+0x3f3c00 - 0x3f3c0f  -  mixing voice
+0x7f0000 - 0x7f0000  -  GMDR
+```
 
 (Note the difference in numbering to the numbering of voices in EVCE for
 sample and mixing voices, as these numbers are local to a particular
