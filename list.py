@@ -8,7 +8,7 @@ import sys
 FILE_MAGIC = "YAMAHA-YSFC"
 
 
-def read_catalogue(inputfile, types=None):
+def read_catalog(inputfile, types=None):
     data = inputfile.read(64)
 
     if len(data) != 64:
@@ -19,19 +19,27 @@ def read_catalogue(inputfile, types=None):
     if magic != FILE_MAGIC:
         raise ValueError("Invalid file header magic string.")
 
-    if data[36:] != 28 * b"\xff":
-        raise ValueError("Invalid header padding.")
-
     try:
-        version = tuple(int(x) for x in data[16:32].rstrip(b"\x00").split(b"."))
-        size = struct.unpack(">I", data[32:36])[0]
-        catalog = inputfile.read(size)
-        assert len(version) == 3 and len(catalog) == size
+        version = tuple(int(x) for x in data[16:32].rstrip(b"\0").split(b"."))
+        assert len(version) == 3
     except:
-        raise ValueError("Truncated file")
+        raise ValueError("Invalid file version format.")
 
-    if version[0:2] != (1, 0) or version[2] not in (0, 1, 2, 3):
-        raise ValueError("Unsupported file format version")
+    catalog_size = struct.unpack(">I", data[32:36])[0]
+    catalog = inputfile.read(catalog_size)
+
+    if len(catalog) != catalog_size:
+        raise ValueError("Truncated catalogue data. Expected %d bytes, got %d." %
+                         (catalog_size, len(catalog)))
+
+    if version[0] < 1 or version[1] != 0 or version[2] not in (0, 1, 2, 3):
+        raise ValueError("Unsupported file format version.")
+
+    if version[0] >= 4:
+        pad_size = struct.unpack(">I", data[48:52])[0]
+        inputfile.seek(pad_size, 1)
+    elif data[36:] != 28 * b"\xff":
+        raise ValueError("Invalid header padding.")
 
     blocks = {}
     cursor = 64
@@ -98,6 +106,8 @@ def parse_entry_list(version, entries, data):
         names = names.strip(b"\0").split(b"\0")
 
         item = {
+            "size": size,
+            "offset": offset,
             "number": number,
             "name": names[0].decode().rstrip(),
         }
@@ -107,8 +117,9 @@ def parse_entry_list(version, entries, data):
 
         if len(names) > 2:
             item["depends"] = names[2:]
+
         if data:
-            item["data"] = data[offset - 8 : offset + size]
+            item["data"] = data[offset - 8:offset + size]
 
         items.append(item)
         cursor += length + 8
@@ -150,7 +161,7 @@ def main(args=None):
     args = ap.parse_args(args)
 
     with open(args.inputfile, 'rb') as fp:
-        version, blocks = read_catalogue(fp)
+        version, blocks = read_catalog(fp)
 
     print("Version:", version)
     for block in blocks:
