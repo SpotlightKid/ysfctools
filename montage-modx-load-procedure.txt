@@ -1,0 +1,12 @@
+https://www.yamahasynth.com/ask-a-question/how-to-load-a-waveform-multisample-into-the-montage?start=20#reply-21991
+
+After spending money for the Montage, for my foot switches and the expression pedal because the Montage doesn't have a feature to switch the polarity internally (another area where Yamaha holds a sad record), I'm not really eager to spend money for an editor which is not even programmed for the Montage but for the Motif XF. For now, if my multisample consist of a few individual samples, I simply create a new waveform right on the Montage.
+If I have a multisample with a lot of recordings or a lot of velocity switched waveforms, then I use a tedious and time consuming workaround:
+
+I save my internal work as a user file to usb.
+Then I load my new waveform which automatically erases all existing user waveforms.
+Then I program my new performance with this new wave form.
+Then I save all the internal data as a library file.
+Then I load my saved user file which in turn erases the new user waveform but restores all my previous ones.
+Then I load the library file into one of the library slots. There I select the newly created performance which contains the new waveform and select the Import function.
+This finally adds my new waveform to the existing ones and then I can save all my data as a user file.
