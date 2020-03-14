@@ -25,42 +25,57 @@ def read_catalog(inputfile, types=None):
     except:
         raise ValueError("Invalid file version format.")
 
-    catalog_size = struct.unpack(">I", data[32:36])[0]
-    catalog = inputfile.read(catalog_size)
-
-    if len(catalog) != catalog_size:
-        raise ValueError("Truncated catalogue data. Expected %d bytes, got %d." %
-                         (catalog_size, len(catalog)))
-
     if version[0] < 1 or version[1] != 0 or version[2] not in (0, 1, 2, 3):
         raise ValueError("Unsupported file format version.")
 
     if version[0] >= 4:
         pad_size = struct.unpack(">I", data[48:52])[0]
-        inputfile.seek(pad_size, 1)
+        #inputfile.seek(pad_size, 1)
     elif data[36:] != 28 * b"\xff":
         raise ValueError("Invalid header padding.")
 
-    blocks = {}
-    cursor = 64
+    catalog_size = struct.unpack(">I", data[32:36])[0]
+    catalog_offset = inputfile.tell()
+    catalog = []
 
-    while True:
+    while inputfile.tell() < catalog_offset + catalog_size:
         block_id = inputfile.read(4).decode()
 
-        if not block_id:
-            break
-
         if len(block_id) != 4:
-            raise ValueError("Truncated file")
+            raise ValueError("Truncated catalogue.")
         elif not block_id.isalpha() or not block_id.isupper():
             raise ValueError("Invalid block identifier '%s' in catalogue." % block_id)
+
+        try:
+            offset = struct.unpack(">I", inputfile.read(4))[0]
+        except:
+            raise ValueError("Invalid catalogue entry '%s'. Could not read offset" % (block_id,))
+
+        catalog.append((block_id, offset))
+
+    blocks = {}
+
+    for cblock_id, offset in catalog:
+        if not cblock_id.startswith('E'):
+            continue
+
+        inputfile.seek(offset)
+        block_id = inputfile.read(4).decode()
+
+        if len(block_id) != 4:
+            raise ValueError("Truncated block header. Expected '%s', read '%s'." %
+                             (cblock_id, block_id))
+        elif not block_id.isalpha() or not block_id.isupper():
+            raise ValueError("Invalid block identifier '%s' in catalogue." % block_id)
+        elif cblock_id != block_id:
+            print("Wrong block ID at offset %s. Expected '%s', read '%s'." % (cblock_id, block_id))
+            print("Ignoring block.")
+            continue
 
         try:
             size = struct.unpack(">I", inputfile.read(4))[0]
         except:
             raise ValueError("Invalid block '%s'. Could not read size" % (block_id,))
-
-        cursor += 8 + size
 
         if not types or block_id in types:
             block_data = inputfile.read(size)
@@ -70,38 +85,32 @@ def read_catalog(inputfile, types=None):
                                  (block_id, size, len(block_data)))
 
             blocks[block_id] = block_data
-        else:
-            inputfile.seek(size, 1)
-            pos = inputfile.tell()
-
-            if pos != cursor:
-                raise ValueError("Truncated block '%s'. EOF at %d bytes." % (block_id, pos))
 
     return version, blocks
 
 
-def parse_entry_list(version, entries, data):
+def parse_entry_list(version, data):
     cursor = 4
     items = []
-    count = struct.unpack_from(">I", entries)[0]
+    count = struct.unpack_from(">I", data)[0]
 
-    while cursor < len(entries):
-        magic, length = struct.unpack_from(">4sI", entries, cursor)
+    while cursor < len(data):
+        magic, length = struct.unpack_from(">4sI", data, cursor)
 
-        if magic != b"Entr" or cursor + length + 8 > len(entries):
-            raise ValueError("Invalid file format")
+        if magic != b"Entr" or cursor + length + 8 > len(data):
+            raise ValueError("Invalid entry list block.")
 
         if version <= (1, 0, 2):
-            size, offset, number = struct.unpack_from(">4xI4x2I", entries, cursor + 8)
+            size, offset, number = struct.unpack_from(">4xI4x2I", data, cursor + 8)
         else:
-            size, offset, number = struct.unpack_from(">3I", entries, cursor + 8)
+            size, offset, number = struct.unpack_from(">3I", data, cursor + 8)
 
         if version <= (1, 0, 1):
-            names = entries[cursor + 29:cursor + length + 8]
+            names = data[cursor + 29:cursor + length + 8]
         elif version <= (1, 0, 2):
-            names = entries[cursor + 30:cursor + length + 8]
+            names = data[cursor + 30:cursor + length + 8]
         else:
-            names = entries[cursor + 20:cursor + length + 8]
+            names = data[cursor + 20:cursor + length + 8]
 
         names = names.strip(b"\0").split(b"\0")
 
@@ -117,9 +126,6 @@ def parse_entry_list(version, entries, data):
 
         if len(names) > 2:
             item["depends"] = names[2:]
-
-        if data:
-            item["data"] = data[offset - 8:offset + size]
 
         items.append(item)
         cursor += length + 8
@@ -164,15 +170,12 @@ def main(args=None):
         version, blocks = read_catalog(fp)
 
     print("Version:", version)
-    for block in blocks:
-        size = struct.unpack_from(">I", blocks[block])[0]
-        print("Block: %s %4d %r" % (block, size, blocks[block][4:20]))
 
     for block in blocks:
         if not block.startswith("E"):
             continue
 
-        for item in parse_entry_list(version, blocks[block], None):
+        for item in parse_entry_list(version, blocks[block]):
             if block == "EVCE":
                 print("VCE %s %s" % (bankname(item["number"]), item["name"]))
             else:
