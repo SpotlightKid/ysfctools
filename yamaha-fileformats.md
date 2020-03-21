@@ -4,11 +4,13 @@ Yamaha Workstation and Stage Piano File Formats
 | File extension | Model        | File type    | Description                                                    |
 | -------------- | ------------ | ------------ | -------------------------------------------------------------- |
 | .X8B           | MODX         | Connect      | Edit Buffer ?, Songs                                           |
+| .X8L           | MODX         | All Voice    | Library Performances, Arpeggios, Waveforms, Songs              |
+| .X8U           | MODX         | User File    | User-Voices, User Performances, User Arpeggios, User Waveforms |
 | -------------- | ------------ | ------------ | -------------------------------------------------------------- |
 | .X7A           | Montage      | All          | User Performances, User Arpeggios, User Waveforms, Libraries   |
 | .X7B           | Montage      | Connect      | Edit Buffer ?, Songs                                           |
-| .X7L           | Montage/MODX | All Voice    | Library Performances, Arpeggios, Waveforms, Songs              |
-| .X7U           | Montage/MODX | User File    | User-Voices, User Performances, User Arpeggios, User Waveforms |
+| .X7L           | Montage      | All Voice    | Library Performances, Arpeggios, Waveforms, Songs              |
+| .X7U           | Montage      | User File    | User-Voices, User Performances, User Arpeggios, User Waveforms |
 | -------------- | ------------ | ------------ | -------------------------------------------------------------- |
 | .X3A           | Motif XF     | All          | User Voices, User Performances, User Arpeggios, User Waveforms |
 | .X3V           | Motif XF     | All Voice    | User Voices                                                    |
