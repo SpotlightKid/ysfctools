@@ -8,8 +8,8 @@
 import argparse
 import logging
 import sys
+import xml.etree.ElementTree as etree
 
-from lxml import etree
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
 
@@ -44,24 +44,24 @@ def parse_midnam(fileobj):
     tree = etree.parse(fileobj)
     namesets = {}
 
-    for nsnum, nameset in enumerate(tree.xpath("*/ChannelNameSet")):
+    for nsnum, nameset in enumerate(tree.findall("*/ChannelNameSet")):
         nsname = nameset.get("Name", "<unnamed set #{}>".format(nsnum + 1))
         log.debug("Channel Name Set: %s", nsname)
 
         patchbanks = {}
 
-        for pbnum, patchbank in enumerate(nameset.xpath("./PatchBank")):
+        for pbnum, patchbank in enumerate(nameset.findall("./PatchBank")):
             pbname = patchbank.get("Name", "<unnamed bank #{}>".format(pbnum + 1))
             log.debug("Patch Bank: %s", pbname)
 
-            msb = patchbank.xpath("./MIDICommands/ControlChange[@Control='0']")
+            msb = patchbank.findall("./MIDICommands/ControlChange[@Control='0']")
 
             try:
                 msb = int(msb[0].get("Value"))
             except:
                 msb = ""
 
-            lsb = patchbank.xpath("./MIDICommands/ControlChange[@Control='32']")
+            lsb = patchbank.findall("./MIDICommands/ControlChange[@Control='32']")
 
             try:
                 lsb = int(lsb[0].get("Value"))
@@ -70,7 +70,7 @@ def parse_midnam(fileobj):
 
             patches = []
 
-            for pnum, patch in enumerate(patchbank.xpath("./PatchNameList/Patch")):
+            for pnum, patch in enumerate(patchbank.findall("./PatchNameList/Patch")):
                 pnumber = patch.get("Number")
                 pname = patch.get(
                     "Name", "<unnamed patch #{}".format(patch.get("Number", pnum + 1))
@@ -178,8 +178,6 @@ def main(args=None):
 
     for nsname, nameset in namesets.items():
         write_xlsx(nsname, nameset)
-
-    return 0
 
 
 if __name__ == "__main__":
