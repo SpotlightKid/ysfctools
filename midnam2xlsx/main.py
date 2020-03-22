@@ -23,14 +23,33 @@ COLUMNS_ALL = {
     "B": ("MSB", 7, colhead, numcell),
     "C": ("LSB", 7, colhead, numcell),
     "D": ("PC", 7, colhead, numcell),
-    "E": ("Category", 10, colhead, numcell),
+    "E": ("Category", 12, colhead, numcell),
     "F": ("Name", 20, colhead, txtcell),
 }
 
 COLUMNS_BANK = {
     "A": ("PC", 6, colhead, numcell),
-    "B": ("Category", 8, colhead, numcell),
+    "B": ("Category", 12, colhead, numcell),
     "C": ("Name", 20, colhead, txtcell),
+}
+
+CATEGORIES = {
+    "Br": "Brass",
+    "Bs": "Bass",
+    "Cp": "Chromatic Perc",
+    "Dr": "Drum / Perc",
+    "Et": "Ethnic",
+    "Gt": "Guitar",
+    "Kb": "Keyboard",
+    "Ld": "Syn Lead",
+    "Me": "Musical FX",
+    "Or": "Organ",
+    "Pd": "Pad / Choir",
+    "Pn": "Piano",
+    "Sc": "Syn Comp",
+    "Se": "Sound FX",
+    "St": "Strings",
+    "WW": "Woodwind",
 }
 
 
@@ -92,6 +111,8 @@ def parse_midnam(fileobj):
                     category, pname = pname.split(":", 1)
                 except:
                     category = ""
+                else:
+                    category = CATEGORIES.get(category, category)
 
                 patches.append([pbname, msb, lsb, pc, category, pname])
 
