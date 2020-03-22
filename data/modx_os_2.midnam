@@ -472,21 +472,21 @@
 					<Patch Number="011" Name="Br:The Synth Brass 2" ProgramChange="10" />
 					<Patch Number="012" Name="Br:PopBrass &amp; SynBrass" ProgramChange="11" />
 					<Patch Number="013" Name="Br:The Hybrid BRASS Sec" ProgramChange="12" />
-					<Patch Number="014" Name="SW:Piccolo 2" ProgramChange="13" />
-					<Patch Number="015" Name="SW:Concert Flute" ProgramChange="14" />
-					<Patch Number="016" Name="SW:Latin Flutist" ProgramChange="15" />
-					<Patch Number="017" Name="SW:Penny Whistle" ProgramChange="16" />
-					<Patch Number="018" Name="SW:Low D Whistle" ProgramChange="17" />
-					<Patch Number="019" Name="SW:FM Pan Flute" ProgramChange="18" />
-					<Patch Number="020" Name="SW:Oboe 3" ProgramChange="19" />
-					<Patch Number="021" Name="SW:Orch Clarinet" ProgramChange="20" />
-					<Patch Number="022" Name="SW:Bassoon 3" ProgramChange="21" />
-					<Patch Number="023" Name="SW:Contra Bassoon" ProgramChange="22" />
-					<Patch Number="024" Name="SW:Wind Ensemble" ProgramChange="23" />
-					<Patch Number="025" Name="SW:Inauguration" ProgramChange="24" />
-					<Patch Number="026" Name="SW:60s Movie Melody" ProgramChange="25" />
-					<Patch Number="027" Name="SW:FM Harmonica" ProgramChange="26" />
-					<Patch Number="028" Name="SW:FM Saxophone" ProgramChange="27" />
+					<Patch Number="014" Name="WW:Piccolo 2" ProgramChange="13" />
+					<Patch Number="015" Name="WW:Concert Flute" ProgramChange="14" />
+					<Patch Number="016" Name="WW:Latin Flutist" ProgramChange="15" />
+					<Patch Number="017" Name="WW:Penny Whistle" ProgramChange="16" />
+					<Patch Number="018" Name="WW:Low D Whistle" ProgramChange="17" />
+					<Patch Number="019" Name="WW:FM Pan Flute" ProgramChange="18" />
+					<Patch Number="020" Name="WW:Oboe 3" ProgramChange="19" />
+					<Patch Number="021" Name="WW:Orch Clarinet" ProgramChange="20" />
+					<Patch Number="022" Name="WW:Bassoon 3" ProgramChange="21" />
+					<Patch Number="023" Name="WW:Contra Bassoon" ProgramChange="22" />
+					<Patch Number="024" Name="WW:Wind Ensemble" ProgramChange="23" />
+					<Patch Number="025" Name="WW:Inauguration" ProgramChange="24" />
+					<Patch Number="026" Name="WW:60s Movie Melody" ProgramChange="25" />
+					<Patch Number="027" Name="WW:FM Harmonica" ProgramChange="26" />
+					<Patch Number="028" Name="WW:FM Saxophone" ProgramChange="27" />
 					<Patch Number="029" Name="Ld:Singleline 2" ProgramChange="28" />
 					<Patch Number="030" Name="Ld:FM Vocal Lead" ProgramChange="29" />
 					<Patch Number="031" Name="Ld:Monster Lead" ProgramChange="30" />
@@ -1435,40 +1435,40 @@
 					<Patch Number="022" Name="Br:Ob Horns" ProgramChange="21" />
 					<Patch Number="023" Name="Br:Slow PWM Brass" ProgramChange="22" />
 					<Patch Number="024" Name="Br:Soft 5th Brass" ProgramChange="23" />
-					<Patch Number="025" Name="SW:Soprano Legato" ProgramChange="24" />
-					<Patch Number="026" Name="SW:Soprano Soft AF1" ProgramChange="25" />
-					<Patch Number="027" Name="SW:Alto Vib Legato" ProgramChange="26" />
-					<Patch Number="028" Name="SW:Alto Legato" ProgramChange="27" />
-					<Patch Number="029" Name="SW:Alto" ProgramChange="28" />
-					<Patch Number="030" Name="SW:Tenor Dynamic AF1" ProgramChange="29" />
-					<Patch Number="031" Name="SW:Tenor Soft Legato" ProgramChange="30" />
-					<Patch Number="032" Name="SW:Velo Growl Legato" ProgramChange="31" />
-					<Patch Number="033" Name="SW:Tenor Growl AF1" ProgramChange="32" />
-					<Patch Number="034" Name="SW:Baritone" ProgramChange="33" />
-					<Patch Number="035" Name="SW:Hip Bari" ProgramChange="34" />
-					<Patch Number="036" Name="SW:Tenor Section" ProgramChange="35" />
-					<Patch Number="037" Name="SW:Sax Octave Section" ProgramChange="36" />
-					<Patch Number="038" Name="SW:Mixed Sax Section" ProgramChange="37" />
-					<Patch Number="039" Name="SW:Flute Legato" ProgramChange="38" />
-					<Patch Number="040" Name="SW:Sweet Flute AF1" ProgramChange="39" />
-					<Patch Number="041" Name="SW:Wood Flute" ProgramChange="40" />
-					<Patch Number="042" Name="SW:Oboe 1 AF1" ProgramChange="41" />
-					<Patch Number="043" Name="SW:Sweet Oboe Legato" ProgramChange="42" />
-					<Patch Number="044" Name="SW:Oboe Soft Legato" ProgramChange="43" />
-					<Patch Number="045" Name="SW:Clarinet 1 AF1" ProgramChange="44" />
-					<Patch Number="046" Name="SW:Jazzy Cla Legato" ProgramChange="45" />
-					<Patch Number="047" Name="SW:Bassoon 1 AF1" ProgramChange="46" />
-					<Patch Number="048" Name="SW:Irish Pipe Legato" ProgramChange="47" />
-					<Patch Number="049" Name="SW:2 Flutes" ProgramChange="48" />
-					<Patch Number="050" Name="SW:Flute &amp; Clari" ProgramChange="49" />
-					<Patch Number="051" Name="SW:2 Oboes &amp; Bassoon" ProgramChange="50" />
-					<Patch Number="052" Name="SW:WoodWind Quartet" ProgramChange="51" />
-					<Patch Number="053" Name="SW:Gentle Harp" ProgramChange="52" />
-					<Patch Number="054" Name="SW:Woody Harp" ProgramChange="53" />
-					<Patch Number="055" Name="SW:Bluz Distort" ProgramChange="54" />
-					<Patch Number="056" Name="SW:Campfire" ProgramChange="55" />
-					<Patch Number="057" Name="SW:Tron Flute" ProgramChange="56" />
-					<Patch Number="058" Name="SW:Flootz" ProgramChange="57" />
+					<Patch Number="025" Name="WW:Soprano Legato" ProgramChange="24" />
+					<Patch Number="026" Name="WW:Soprano Soft AF1" ProgramChange="25" />
+					<Patch Number="027" Name="WW:Alto Vib Legato" ProgramChange="26" />
+					<Patch Number="028" Name="WW:Alto Legato" ProgramChange="27" />
+					<Patch Number="029" Name="WW:Alto" ProgramChange="28" />
+					<Patch Number="030" Name="WW:Tenor Dynamic AF1" ProgramChange="29" />
+					<Patch Number="031" Name="WW:Tenor Soft Legato" ProgramChange="30" />
+					<Patch Number="032" Name="WW:Velo Growl Legato" ProgramChange="31" />
+					<Patch Number="033" Name="WW:Tenor Growl AF1" ProgramChange="32" />
+					<Patch Number="034" Name="WW:Baritone" ProgramChange="33" />
+					<Patch Number="035" Name="WW:Hip Bari" ProgramChange="34" />
+					<Patch Number="036" Name="WW:Tenor Section" ProgramChange="35" />
+					<Patch Number="037" Name="WW:Sax Octave Section" ProgramChange="36" />
+					<Patch Number="038" Name="WW:Mixed Sax Section" ProgramChange="37" />
+					<Patch Number="039" Name="WW:Flute Legato" ProgramChange="38" />
+					<Patch Number="040" Name="WW:Sweet Flute AF1" ProgramChange="39" />
+					<Patch Number="041" Name="WW:Wood Flute" ProgramChange="40" />
+					<Patch Number="042" Name="WW:Oboe 1 AF1" ProgramChange="41" />
+					<Patch Number="043" Name="WW:Sweet Oboe Legato" ProgramChange="42" />
+					<Patch Number="044" Name="WW:Oboe Soft Legato" ProgramChange="43" />
+					<Patch Number="045" Name="WW:Clarinet 1 AF1" ProgramChange="44" />
+					<Patch Number="046" Name="WW:Jazzy Cla Legato" ProgramChange="45" />
+					<Patch Number="047" Name="WW:Bassoon 1 AF1" ProgramChange="46" />
+					<Patch Number="048" Name="WW:Irish Pipe Legato" ProgramChange="47" />
+					<Patch Number="049" Name="WW:2 Flutes" ProgramChange="48" />
+					<Patch Number="050" Name="WW:Flute &amp; Clari" ProgramChange="49" />
+					<Patch Number="051" Name="WW:2 Oboes &amp; Bassoon" ProgramChange="50" />
+					<Patch Number="052" Name="WW:WoodWind Quartet" ProgramChange="51" />
+					<Patch Number="053" Name="WW:Gentle Harp" ProgramChange="52" />
+					<Patch Number="054" Name="WW:Woody Harp" ProgramChange="53" />
+					<Patch Number="055" Name="WW:Bluz Distort" ProgramChange="54" />
+					<Patch Number="056" Name="WW:Campfire" ProgramChange="55" />
+					<Patch Number="057" Name="WW:Tron Flute" ProgramChange="56" />
+					<Patch Number="058" Name="WW:Flootz" ProgramChange="57" />
 					<Patch Number="059" Name="Ld:Huge Lead" ProgramChange="58" />
 					<Patch Number="060" Name="Ld:Bleep Lead AF2" ProgramChange="59" />
 					<Patch Number="061" Name="Ld:Detuned Vintage" ProgramChange="60" />
@@ -1999,7 +1999,7 @@
 					<Patch Number="042" Name="Or:Church Organ" ProgramChange="41" />
 					<Patch Number="043" Name="Or:Reed Organ" ProgramChange="42" />
 					<Patch Number="044" Name="Or:Accordion" ProgramChange="43" />
-					<Patch Number="045" Name="SW:Harmonica" ProgramChange="44" />
+					<Patch Number="045" Name="WW:Harmonica" ProgramChange="44" />
 					<Patch Number="046" Name="Or:Tango Accordion 1" ProgramChange="45" />
 					<Patch Number="047" Name="Gt:Nylon Guitar" ProgramChange="46" />
 					<Patch Number="048" Name="Gt:Steel Guitar" ProgramChange="47" />
@@ -2041,22 +2041,22 @@
 					<Patch Number="084" Name="Br:Brass Section" ProgramChange="83" />
 					<Patch Number="085" Name="Br:Synth Brass 1" ProgramChange="84" />
 					<Patch Number="086" Name="Br:Synth Brass 2" ProgramChange="85" />
-					<Patch Number="087" Name="SW:Soprano Sax" ProgramChange="86" />
-					<Patch Number="088" Name="SW:Alto Sax" ProgramChange="87" />
-					<Patch Number="089" Name="SW:Tenor Sax" ProgramChange="88" />
-					<Patch Number="090" Name="SW:Baritone Sax" ProgramChange="89" />
-					<Patch Number="091" Name="SW:Oboe 2" ProgramChange="90" />
-					<Patch Number="092" Name="SW:English Horn" ProgramChange="91" />
-					<Patch Number="093" Name="SW:Bassoon 2" ProgramChange="92" />
-					<Patch Number="094" Name="SW:Clarinet 2" ProgramChange="93" />
-					<Patch Number="095" Name="SW:Piccolo 1" ProgramChange="94" />
-					<Patch Number="096" Name="SW:Flute" ProgramChange="95" />
-					<Patch Number="097" Name="SW:Recorder" ProgramChange="96" />
-					<Patch Number="098" Name="SW:Panflute" ProgramChange="97" />
-					<Patch Number="099" Name="SW:Bottle" ProgramChange="98" />
-					<Patch Number="100" Name="SW:Shakuhachi" ProgramChange="99" />
-					<Patch Number="101" Name="SW:Whistle" ProgramChange="100" />
-					<Patch Number="102" Name="SW:Ocarina" ProgramChange="101" />
+					<Patch Number="087" Name="WW:Soprano Sax" ProgramChange="86" />
+					<Patch Number="088" Name="WW:Alto Sax" ProgramChange="87" />
+					<Patch Number="089" Name="WW:Tenor Sax" ProgramChange="88" />
+					<Patch Number="090" Name="WW:Baritone Sax" ProgramChange="89" />
+					<Patch Number="091" Name="WW:Oboe 2" ProgramChange="90" />
+					<Patch Number="092" Name="WW:English Horn" ProgramChange="91" />
+					<Patch Number="093" Name="WW:Bassoon 2" ProgramChange="92" />
+					<Patch Number="094" Name="WW:Clarinet 2" ProgramChange="93" />
+					<Patch Number="095" Name="WW:Piccolo 1" ProgramChange="94" />
+					<Patch Number="096" Name="WW:Flute" ProgramChange="95" />
+					<Patch Number="097" Name="WW:Recorder" ProgramChange="96" />
+					<Patch Number="098" Name="WW:Panflute" ProgramChange="97" />
+					<Patch Number="099" Name="WW:Bottle" ProgramChange="98" />
+					<Patch Number="100" Name="WW:Shakuhachi" ProgramChange="99" />
+					<Patch Number="101" Name="WW:Whistle" ProgramChange="100" />
+					<Patch Number="102" Name="WW:Ocarina" ProgramChange="101" />
 					<Patch Number="103" Name="Ld:Square Lead" ProgramChange="102" />
 					<Patch Number="104" Name="Ld:Saw Lead" ProgramChange="103" />
 					<Patch Number="105" Name="Ld:Calliope Lead" ProgramChange="104" />
@@ -2094,9 +2094,9 @@
 					<Patch Number="001" Name="Et:Shamisen" ProgramChange="0" />
 					<Patch Number="002" Name="Et:Koto" ProgramChange="1" />
 					<Patch Number="003" Name="Cp:Kalimba" ProgramChange="2" />
-					<Patch Number="004" Name="SW:Bagpipe" ProgramChange="3" />
+					<Patch Number="004" Name="WW:Bagpipe" ProgramChange="3" />
 					<Patch Number="005" Name="Et:Fiddle" ProgramChange="4" />
-					<Patch Number="006" Name="SW:Shehnai 2" ProgramChange="5" />
+					<Patch Number="006" Name="WW:Shehnai 2" ProgramChange="5" />
 					<Patch Number="007" Name="Cp:Tinkle Bell" ProgramChange="6" />
 					<Patch Number="008" Name="Dr:Agogo" ProgramChange="7" />
 					<Patch Number="009" Name="Cp:Steel Drum" ProgramChange="8" />
@@ -2180,11 +2180,11 @@
 					<Patch Number="087" Name="Br:Jazz Brass Section" ProgramChange="86" />
 					<Patch Number="088" Name="Br:Ob Syncomp" ProgramChange="87" />
 					<Patch Number="089" Name="Br:Tacky Brass AF1&amp;2" ProgramChange="88" />
-					<Patch Number="090" Name="SW:Mellow Soprano" ProgramChange="89" />
-					<Patch Number="091" Name="SW:Alto Accent Legato" ProgramChange="90" />
-					<Patch Number="092" Name="SW:Tenor Max" ProgramChange="91" />
-					<Patch Number="093" Name="SW:SoftTenorSaxLegato" ProgramChange="92" />
-					<Patch Number="094" Name="SW:Piccolo Legato" ProgramChange="93" />
+					<Patch Number="090" Name="WW:Mellow Soprano" ProgramChange="89" />
+					<Patch Number="091" Name="WW:Alto Accent Legato" ProgramChange="90" />
+					<Patch Number="092" Name="WW:Tenor Max" ProgramChange="91" />
+					<Patch Number="093" Name="WW:SoftTenorSaxLegato" ProgramChange="92" />
+					<Patch Number="094" Name="WW:Piccolo Legato" ProgramChange="93" />
 					<Patch Number="095" Name="Ld:Bizz AF2" ProgramChange="94" />
 					<Patch Number="096" Name="Ld:The Bitch AT AF1&amp;2" ProgramChange="95" />
 					<Patch Number="097" Name="Pd:Mellow Swell AF1&amp;2" ProgramChange="96" />
@@ -4425,7 +4425,7 @@
 					<Patch Number="020" Name="Or:Church Organ" ProgramChange="19" />
 					<Patch Number="021" Name="Or:Reed Organ" ProgramChange="20" />
 					<Patch Number="022" Name="Or:Accordion" ProgramChange="21" />
-					<Patch Number="023" Name="SW:Harmonica" ProgramChange="22" />
+					<Patch Number="023" Name="WW:Harmonica" ProgramChange="22" />
 					<Patch Number="024" Name="Or:Tango Accordion" ProgramChange="23" />
 					<Patch Number="025" Name="Gt:Nylon Guitar" ProgramChange="24" />
 					<Patch Number="026" Name="Gt:Steel Guitar" ProgramChange="25" />
@@ -4467,22 +4467,22 @@
 					<Patch Number="062" Name="Br:Brass Section" ProgramChange="61" />
 					<Patch Number="063" Name="Br:Synth Brass 1" ProgramChange="62" />
 					<Patch Number="064" Name="Br:Synth Brass 2" ProgramChange="63" />
-					<Patch Number="065" Name="SW:Soprano Sax" ProgramChange="64" />
-					<Patch Number="066" Name="SW:Alto Sax" ProgramChange="65" />
-					<Patch Number="067" Name="SW:Tenor Sax" ProgramChange="66" />
-					<Patch Number="068" Name="SW:Baritone Sax" ProgramChange="67" />
-					<Patch Number="069" Name="SW:Oboe 2" ProgramChange="68" />
-					<Patch Number="070" Name="SW:English Horn" ProgramChange="69" />
-					<Patch Number="071" Name="SW:Bassoon 2" ProgramChange="70" />
-					<Patch Number="072" Name="SW:Clarinet 2" ProgramChange="71" />
-					<Patch Number="073" Name="SW:Piccolo" ProgramChange="72" />
-					<Patch Number="074" Name="SW:Flute" ProgramChange="73" />
-					<Patch Number="075" Name="SW:Recorder" ProgramChange="74" />
-					<Patch Number="076" Name="SW:Panflute" ProgramChange="75" />
-					<Patch Number="077" Name="SW:Bottle" ProgramChange="76" />
-					<Patch Number="078" Name="SW:Shakuhachi" ProgramChange="77" />
-					<Patch Number="079" Name="SW:Whistle" ProgramChange="78" />
-					<Patch Number="080" Name="SW:Ocarina" ProgramChange="79" />
+					<Patch Number="065" Name="WW:Soprano Sax" ProgramChange="64" />
+					<Patch Number="066" Name="WW:Alto Sax" ProgramChange="65" />
+					<Patch Number="067" Name="WW:Tenor Sax" ProgramChange="66" />
+					<Patch Number="068" Name="WW:Baritone Sax" ProgramChange="67" />
+					<Patch Number="069" Name="WW:Oboe 2" ProgramChange="68" />
+					<Patch Number="070" Name="WW:English Horn" ProgramChange="69" />
+					<Patch Number="071" Name="WW:Bassoon 2" ProgramChange="70" />
+					<Patch Number="072" Name="WW:Clarinet 2" ProgramChange="71" />
+					<Patch Number="073" Name="WW:Piccolo" ProgramChange="72" />
+					<Patch Number="074" Name="WW:Flute" ProgramChange="73" />
+					<Patch Number="075" Name="WW:Recorder" ProgramChange="74" />
+					<Patch Number="076" Name="WW:Panflute" ProgramChange="75" />
+					<Patch Number="077" Name="WW:Bottle" ProgramChange="76" />
+					<Patch Number="078" Name="WW:Shakuhachi" ProgramChange="77" />
+					<Patch Number="079" Name="WW:Whistle" ProgramChange="78" />
+					<Patch Number="080" Name="WW:Ocarina" ProgramChange="79" />
 					<Patch Number="081" Name="Ld:Square Lead" ProgramChange="80" />
 					<Patch Number="082" Name="Ld:Saw Lead" ProgramChange="81" />
 					<Patch Number="083" Name="Ld:Calliope Lead" ProgramChange="82" />
@@ -4512,9 +4512,9 @@
 					<Patch Number="107" Name="Et:Shamisen" ProgramChange="106" />
 					<Patch Number="108" Name="Et:Koto" ProgramChange="107" />
 					<Patch Number="109" Name="Cp:Kalimba" ProgramChange="108" />
-					<Patch Number="110" Name="SW:Bagpipe" ProgramChange="109" />
+					<Patch Number="110" Name="WW:Bagpipe" ProgramChange="109" />
 					<Patch Number="111" Name="Et:Fiddle" ProgramChange="110" />
-					<Patch Number="112" Name="SW:Shehnai 2" ProgramChange="111" />
+					<Patch Number="112" Name="WW:Shehnai 2" ProgramChange="111" />
 					<Patch Number="113" Name="Cp:Tinkle Bell" ProgramChange="112" />
 					<Patch Number="114" Name="Dr:Agogo" ProgramChange="113" />
 					<Patch Number="115" Name="Cp:Steel Drum" ProgramChange="114" />
