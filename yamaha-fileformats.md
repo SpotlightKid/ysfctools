@@ -34,8 +34,8 @@ Yamaha Workstation and Stage Piano File Formats
 | -------------- | ------------ | ------------ | -------------------------------------------------------------- |
 | .W7A           | Motif ES     | All          | User Voices, User Performances, User Arpeggios, User Waveforms |
 | .W7V           | Motif ES     | All Voice    | User Voices, User Waveforms (?)                                |
-| .X0G ???       | Motif XS     | All Arpeggio | User Arpeggios                                                 |
-| .X0W ???       | Motif XS     | All Waveform | User Waveforms                                                 |
+| .W7G ???       | Motif ES     | All Arpeggio | User Arpeggios                                                 |
+| .W7W ???       | Motif ES     | All Waveform | User Waveforms                                                 |
 
 
 | File type group | Header Version |
