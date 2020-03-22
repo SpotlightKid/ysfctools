@@ -40,48 +40,19 @@ def sanitize(s):
     return s
 
 
-def main(args=None):
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("-v", "--verbose", action="store_true", help="Be verbose")
-    ap.add_argument("midnam", type=open, help="MIDNAM input file")
-
-    args = ap.parse_args(args)
-
-    logging.basicConfig(
-        format="%(name)s: %(levelname)s - %(message)s",
-        level=logging.DEBUG if args.verbose else logging.INFO,
-    )
-
-    tree = etree.parse(args.midnam)
+def parse_midnam(fileobj):
+    tree = etree.parse(fileobj)
+    namesets = {}
 
     for nsnum, nameset in enumerate(tree.xpath("*/ChannelNameSet")):
         nsname = nameset.get("Name", "<unnamed set #{}>".format(nsnum + 1))
         log.debug("Channel Name Set: %s", nsname)
 
-        wb = Workbook()
-        wb.add_named_style(colhead)
-
-        ws_all = wb.active
-        ws_all.title = "All"
-
-        for col, (value, width, headstyle, _) in COLUMNS_ALL.items():
-            ws_all[col + "1"] = value
-            ws_all[col + "1"].style = headstyle
-            ws_all.column_dimensions[col].width = width
-
-        ws_all_row = 1
-        ws_all.freeze_panes = "A2"
-
-        for cell in ws_all[1:1]:
-            cell.style = colhead
-
-        for cell in ws_all[1:1]:
-            cell.style = colhead
+        patchbanks = {}
 
         for pbnum, patchbank in enumerate(nameset.xpath("./PatchBank")):
             pbname = patchbank.get("Name", "<unnamed bank #{}>".format(pbnum + 1))
             log.debug("Patch Bank: %s", pbname)
-            wstitle = sanitize(pbname)
 
             msb = patchbank.xpath("./MIDICommands/ControlChange[@Control='0']")
 
@@ -105,7 +76,7 @@ def main(args=None):
                     "Name", "<unnamed patch #{}".format(patch.get("Number", pnum + 1))
                 )
 
-                # If name is the same as the patch number, skip this entry
+                # If name is the same as the patch number, skip this patch
                 try:
                     if int(pnumber) == int(pname):
                         continue
@@ -125,41 +96,88 @@ def main(args=None):
                 patches.append([pbname, msb, lsb, pc, category, pname])
 
             if patches:
-                ws = wb.create_sheet(title=wstitle)
-                ws.freeze_panes = "A2"
+                patchbanks[pbname] = patches
 
-                for col, (value, width, headstyle, _) in COLUMNS_BANK.items():
-                    ws[col + "1"] = value
-                    ws[col + "1"].style = headstyle
-                    ws.column_dimensions[col].width = width
+        if patchbanks:
+            namesets[nsname] = patchbanks
 
-                for row, patch in enumerate(patches, start=2):
-                    ws_all.append(patch)
-                    ws_all_row += 1
+    return namesets
 
-                    for column in COLUMNS_ALL:
-                        ws_all["%s%i" % (column, ws_all_row)].style = COLUMNS_ALL[
-                            column
-                        ][3]
 
-                    ws.append(patch[3:])
+def write_xlsx(nsname, nameset):
+    wb = Workbook()
+    wb.add_named_style(colhead)
 
-                    for column in COLUMNS_BANK:
-                        ws["%s%i" % (column, row)].style = COLUMNS_BANK[column][3]
+    # Use first work sheet named 'All' to collect all patches from all banks
+    ws_all = wb.active
+    ws_all.title = "All"
+    ws_all_row = 1
+    ws_all.freeze_panes = "A2"
 
-        # Set auto filter for 'All'work sheet
-        ws_all.auto_filter.ref = ws_all.dimensions
+    # Set column header styles for 'All' worksheet
+    for col, (value, width, headstyle, _) in COLUMNS_ALL.items():
+        ws_all[col + "1"] = value
+        ws_all[col + "1"].style = headstyle
+        ws_all.column_dimensions[col].width = width
 
-        # Write work book to a file
-        basename = sanitize(nsname).strip()
+    # Create one work sheet for each patch bank
+    for pbnum, (pbname, patchbank) in enumerate(nameset.items()):
+        ws = wb.create_sheet(title=sanitize(pbname))
+        ws.freeze_panes = "A2"
 
-        if basename:
-            xlsxname = basename + ".xlsx"
-        else:
-            xlsxname = "nameset-%02i.xlsx" % (nsnum + 1)
+        # Set column header styles for patch bank worksheet
+        for col, (value, width, headstyle, _) in COLUMNS_BANK.items():
+            ws[col + "1"] = value
+            ws[col + "1"].style = headstyle
+            ws.column_dimensions[col].width = width
 
-        log.info("Writing '%s'...", xlsxname)
-        wb.save(xlsxname)
+        for row, patch in enumerate(patchbank, start=2):
+            if pbname != "GM":
+                ws_all.append(patch)
+                ws_all_row += 1
+
+                # Set cell styles for row in 'All' work sheet
+                for column in COLUMNS_ALL:
+                    ws_all["%s%i" % (column, ws_all_row)].style = COLUMNS_ALL[column][3]
+
+            ws.append(patch[3:])
+
+            # Set cell styles for row in patch bank work sheet
+            for column in COLUMNS_BANK:
+                ws["%s%i" % (column, row)].style = COLUMNS_BANK[column][3]
+
+    # Set auto filter for 'All' work sheet
+    ws_all.auto_filter.ref = ws_all.dimensions
+
+    # Generate filename from nameset name
+    basename = sanitize(nsname).strip()
+
+    if basename:
+        xlsxname = basename + ".xlsx"
+    else:
+        xlsxname = "nameset-%02i.xlsx" % (nsnum + 1)
+
+    log.info("Writing '%s'...", xlsxname)
+    wb.save(xlsxname)
+
+
+def main(args=None):
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("-v", "--verbose", action="store_true", help="Be verbose")
+    ap.add_argument("midnam", type=open, help="MIDNAM input file")
+
+    args = ap.parse_args(args)
+
+    logging.basicConfig(
+        format="%(name)s: %(levelname)s - %(message)s",
+        level=logging.DEBUG if args.verbose else logging.INFO,
+    )
+
+    with args.midnam:
+        namesets = parse_midnam(args.midnam)
+
+    for nsname, nameset in namesets.items():
+        write_xlsx(nsname, nameset)
 
     return 0
 
